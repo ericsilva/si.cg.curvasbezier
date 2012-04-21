@@ -1,0 +1,64 @@
+body {
+	margin: 0 auto;
+	background-color: #fff;
+	font-family: 'Marmelad', cursive;
+	width: 900px;
+}
+
+p {
+	font-size: 12px;
+	color: #000;
+}
+
+.ponto {
+	width: 200px;
+	min-height: 150px;
+	float: left;
+}
+
+#header {
+	text-align: center;
+	font-size: 11px;
+}
+
+#container {
+	height: auto;
+	margin: 0 auto;
+}
+
+#curve {
+	height: auto;
+	margin: 0 auto;
+	top: -100px;
+	left: 200px;
+	margin-left: 100px;
+	position: relative;
+}
+
+#linha {
+	position: absolute;
+	top: 306px;
+	left: 0px;
+	width: 400px;
+	height: 1px;
+	background: #000;
+	font-size: 1px;
+}
+
+button {
+	font-family: 'Marmelad', cursive;
+	font-size: 14px;
+}
+
+.clear {
+	clear: both;
+	line-height: 1px;
+	visibility: hidden;
+}
+
+.dot {
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	background-color: #000;
+}

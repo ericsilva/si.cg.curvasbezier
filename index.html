@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Curva Bezi&eacute;r</title>
+    <link href="http://fonts.googleapis.com/css?family=Marmelad" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bezier.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>Exemplo de uso da Curva B&eacute;zier</h1>
+    </div>
+    <div id="container">
+        <form>
+            <div class="ponto" style="margin-left: 90px">
+                <p>Ponto A:</p>
+                <p>
+                    <label>
+                        X <input type="text" name="ponto[a][x]" value="50" size="2" />
+                    </label>
+                    
+                    <label>
+                        Y <input type="text" name="ponto[a][y]" value="300" size="2"/>
+                    </label>
+                </p>
+                <p>
+                    <button onclick="Bezier.begin(); return false;">Desenhar Curva</button>
+                </p>
+            </div>
+            <div class="ponto">
+                <p>Ponto B:</p>
+                <p>
+                    <label>
+                        X <input type="text" name="ponto[b][x]" value="50" size="2" />
+                    </label>
+                    
+                    <label>
+                        Y <input type="text" name="ponto[b][y]" value="50" size="2"/>
+                    </label>
+                </p>
+            </div>
+            <div class="ponto">
+                <p>Ponto C:</p>
+                <p>
+                    <label>
+                        X <input type="text" name="ponto[c][x]" value="300" size="2" />
+                    </label>
+                    
+                    <label>
+                        Y <input type="text" name="ponto[c][y]" value="50" size="2" />
+                    </label>
+                </p>
+            </div>
+            <div class="ponto">
+                <p>Ponto D:</p>
+                <p>
+                    <label>
+                        X <input type="text" name="ponto[d][x]" value="300" size="2" />
+                    </label>
+                    
+                    <label>
+                        Y <input type="text" name="ponto[d][y]" value="300" size="2" />
+                    </label>
+                </p>
+            </div>
+            <hr class="clear" />
+        </form>
+    </div>
+    
+    <div id="curve"></div>
+</body>
+</html>
