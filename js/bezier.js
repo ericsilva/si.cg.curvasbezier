@@ -17,6 +17,14 @@ var Bezier = {
 	 * Distancia padrao entre os pontos
 	 */
 	distanceDefault : 0.01,
+	
+	/**
+	* Pontos no plano
+	*/
+	p1 : undefined,
+	p2 : undefined,
+	p3 : undefined,
+	p4 : undefined,
 
 	/**
 	 * Cria uma coordenada no plano
@@ -74,27 +82,50 @@ var Bezier = {
 
 	begin : function() {
 		$("#curve").html("");
+		
+		Bezier.p1 = Bezier.makeCoord($("input[name='ponto[a][x]']").val(),
+				$("input[name='ponto[a][y]']").val());
+
+		Bezier.p2 = Bezier.makeCoord($("input[name='ponto[b][x]']").val(),
+				$("input[name='ponto[b][y]']").val());
+
+		Bezier.p3 = Bezier.makeCoord($("input[name='ponto[c][x]']").val(),
+				$("input[name='ponto[c][y]']").val());
+
+		Bezier.p4 = Bezier.makeCoord($("input[name='ponto[d][x]']").val(),
+				$("input[name='ponto[d][y]']").val());
+				
+		var html = "<div class='dot' style='"
+				+ "background-color: red;"
+				+ "top: "  + Bezier.p1.y + "px; "
+				+ "left: " + Bezier.p1.x + "px;'>A</div>"
+				
+				+ "<div class='dot' style='"
+				+ "background-color: red;"
+				+ "top: "  + Bezier.p2.y + "px; "
+				+ "left: " + Bezier.p2.x + "px;'>B</div>"
+				
+				+ "<div class='dot' style='"
+				+ "background-color: red;"
+				+ "top: "  + Bezier.p3.y + "px; "
+				+ "left: " + Bezier.p3.x + "px;'>C</div>"
+				
+				+ "<div class='dot' style='"
+				+ "background-color: red;"
+				+ "top: "  + Bezier.p4.y + "px; "
+				+ "left: " + Bezier.p4.x + "px;'>D</div>";
+		
+		$("#curve").html($("#curve").html() + html);
+				
 		Bezier.distance = Bezier.distanceDefault;
-		Bezier.draw(true);
+		Bezier.draw();
 	},
 
-	draw : function(first) {
+	draw : function() {
 
 		var html = "";
 
-		var p1 = Bezier.makeCoord($("input[name='ponto[a][x]']").val(),
-				$("input[name='ponto[a][y]']").val());
-
-		var p2 = Bezier.makeCoord($("input[name='ponto[b][x]']").val(),
-				$("input[name='ponto[b][y]']").val());
-
-		var p3 = Bezier.makeCoord($("input[name='ponto[c][x]']").val(),
-				$("input[name='ponto[c][y]']").val());
-
-		var p4 = Bezier.makeCoord($("input[name='ponto[d][x]']").val(),
-				$("input[name='ponto[d][y]']").val());
-
-		Bezier.position = Bezier.bezierPoint(p1, p2, p3, p4, Bezier.distance);
+		Bezier.position = Bezier.bezierPoint(Bezier.p1, Bezier.p2, Bezier.p3, Bezier.p4, Bezier.distance);
 
 		var html = "<div class='dot' style='"
 				+ "top: "  + Math.round(Bezier.position.y) + "px; "
@@ -104,7 +135,7 @@ var Bezier = {
 
 		// Proxima posicao
 		Bezier.distance += Bezier.distanceDefault;
-		Bezier.position = Bezier.bezierPoint(p1, p2, p3, p4, Bezier.distance);
+		Bezier.position = Bezier.bezierPoint(Bezier.p1, Bezier.p2, Bezier.p3, Bezier.p4, Bezier.distance);
 		
 		if(Bezier.distance < 1) {
 			setTimeout("Bezier.draw();", 20);
